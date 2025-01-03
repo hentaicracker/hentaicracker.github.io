@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 Docker 搭建开发环境 | 正经博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="陈俊生的正经博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.985c0261.css" as="style"><link rel="preload" href="/assets/js/app.efdf1017.js" as="script"><link rel="preload" href="/assets/js/2.d444b0a2.js" as="script"><link rel="preload" href="/assets/js/1.7ca1e89d.js" as="script"><link rel="preload" href="/assets/js/63.d31d2aac.js" as="script"><link rel="prefetch" href="/assets/js/10.1a004c10.js"><link rel="prefetch" href="/assets/js/11.6560bed7.js"><link rel="prefetch" href="/assets/js/12.20398b1f.js"><link rel="prefetch" href="/assets/js/13.6f95ee0c.js"><link rel="prefetch" href="/assets/js/14.782f19f1.js"><link rel="prefetch" href="/assets/js/15.d25bd3fe.js"><link rel="prefetch" href="/assets/js/16.97c2c4a8.js"><link rel="prefetch" href="/assets/js/17.895b550f.js"><link rel="prefetch" href="/assets/js/18.cdc68d17.js"><link rel="prefetch" href="/assets/js/19.ef8e3a48.js"><link rel="prefetch" href="/assets/js/20.b5d8c482.js"><link rel="prefetch" href="/assets/js/21.2980ee98.js"><link rel="prefetch" href="/assets/js/22.b16736cf.js"><link rel="prefetch" href="/assets/js/23.221060a2.js"><link rel="prefetch" href="/assets/js/24.bb5e2239.js"><link rel="prefetch" href="/assets/js/25.65cbc6a7.js"><link rel="prefetch" href="/assets/js/26.ee90196a.js"><link rel="prefetch" href="/assets/js/27.101bf521.js"><link rel="prefetch" href="/assets/js/28.35ac7c38.js"><link rel="prefetch" href="/assets/js/29.aacd3977.js"><link rel="prefetch" href="/assets/js/3.5ff63961.js"><link rel="prefetch" href="/assets/js/30.68a43ff9.js"><link rel="prefetch" href="/assets/js/31.cc9a91ad.js"><link rel="prefetch" href="/assets/js/32.12ebb196.js"><link rel="prefetch" href="/assets/js/33.a4383cda.js"><link rel="prefetch" href="/assets/js/34.bfa72010.js"><link rel="prefetch" href="/assets/js/35.aeb2002f.js"><link rel="prefetch" href="/assets/js/36.0a918e07.js"><link rel="prefetch" href="/assets/js/37.e00295cb.js"><link rel="prefetch" href="/assets/js/38.da376bbb.js"><link rel="prefetch" href="/assets/js/39.2f9ba8d7.js"><link rel="prefetch" href="/assets/js/4.86934754.js"><link rel="prefetch" href="/assets/js/40.86d171b4.js"><link rel="prefetch" href="/assets/js/41.f1a79136.js"><link rel="prefetch" href="/assets/js/42.f7b4a720.js"><link rel="prefetch" href="/assets/js/43.b824f47f.js"><link rel="prefetch" href="/assets/js/44.b54f4a3e.js"><link rel="prefetch" href="/assets/js/45.2aae7666.js"><link rel="prefetch" href="/assets/js/46.185897cf.js"><link rel="prefetch" href="/assets/js/47.b5418ff9.js"><link rel="prefetch" href="/assets/js/48.099d6193.js"><link rel="prefetch" href="/assets/js/49.18417fbf.js"><link rel="prefetch" href="/assets/js/5.ed646e61.js"><link rel="prefetch" href="/assets/js/50.852f955c.js"><link rel="prefetch" href="/assets/js/51.b571fc7f.js"><link rel="prefetch" href="/assets/js/52.05037053.js"><link rel="prefetch" href="/assets/js/53.69bf0a82.js"><link rel="prefetch" href="/assets/js/54.9449705b.js"><link rel="prefetch" href="/assets/js/55.899be268.js"><link rel="prefetch" href="/assets/js/56.b40737e3.js"><link rel="prefetch" href="/assets/js/57.4e74d18a.js"><link rel="prefetch" href="/assets/js/58.4ba1d249.js"><link rel="prefetch" href="/assets/js/59.9a911d76.js"><link rel="prefetch" href="/assets/js/6.b1c318f0.js"><link rel="prefetch" href="/assets/js/60.cc0e0926.js"><link rel="prefetch" href="/assets/js/61.24ba53e0.js"><link rel="prefetch" href="/assets/js/62.6ff74996.js"><link rel="prefetch" href="/assets/js/64.d14c4015.js"><link rel="prefetch" href="/assets/js/65.124611bc.js"><link rel="prefetch" href="/assets/js/66.da3bf42d.js"><link rel="prefetch" href="/assets/js/67.e17449ef.js"><link rel="prefetch" href="/assets/js/68.ce06c506.js"><link rel="prefetch" href="/assets/js/69.dbda80ad.js"><link rel="prefetch" href="/assets/js/7.f368e4d8.js"><link rel="prefetch" href="/assets/js/70.33b15820.js"><link rel="prefetch" href="/assets/js/71.c74741b4.js"><link rel="prefetch" href="/assets/js/72.b5e33ea4.js"><link rel="prefetch" href="/assets/js/73.5d09bd2e.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.12181bb4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.985c0261.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">正经博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/aboutme.html" class="nav-link">
+  About Me
+</a></div> <a href="https://github.com/hentaicracker/new-blog/tree/vuepress" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/aboutme.html" class="nav-link">
+  About Me
+</a></div> <a href="https://github.com/hentaicracker/new-blog/tree/vuepress" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2025</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2025/zongjie.html" class="sidebar-link">2024 &amp; 2025</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2024</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2024/jietu.html" class="sidebar-link">长截图生成实践</a></li><li><a href="/2024/zongjie.html" class="sidebar-link">2023 &amp; 2024</a></li><li><a href="/2024/chengzhang.html" class="sidebar-link">工程师的自我修养</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>2023</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2023/suibi.html" class="sidebar-link">路遥远，我们一起走</a></li><li><a href="/2023/rust-1.html" class="sidebar-link">《Rust 程序设计语言》读书笔记</a></li><li><a href="/2023/docker.html" aria-current="page" class="active sidebar-link">使用 Docker 搭建开发环境</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/2023/docker.html#场景分析" class="sidebar-link">场景分析</a></li><li class="sidebar-sub-header"><a href="/2023/docker.html#镜像构建" class="sidebar-link">镜像构建</a></li><li class="sidebar-sub-header"><a href="/2023/docker.html#跑服务" class="sidebar-link">跑服务</a></li><li class="sidebar-sub-header"><a href="/2023/docker.html#docker-常用操作" class="sidebar-link">docker 常用操作</a></li></ul></li><li><a href="/2023/zongjie.html" class="sidebar-link">Do not be afraid</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2022</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2022/skia.html" class="sidebar-link">使用 Skia 绘制 2D 图形</a></li><li><a href="/2022/mf.html" class="sidebar-link">基于 MF 的组件化共享工作流 - Qcon 广州演讲整理</a></li><li><a href="/2022/zongjie.html" class="sidebar-link">2021 年终总结</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2021</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2021/docker-osx.html" class="sidebar-link">使用 docker-osx 搭建 macos 构建环境</a></li><li><a href="/2021/zongjie.html" class="sidebar-link">工作 5 年</a></li><li><a href="/2021/deco.html" class="sidebar-link">解构 Deco 编辑器</a></li><li><a href="/2021/py.html" class="sidebar-link">面向前端工程师的 Python 快速入门（30min）</a></li><li><a href="/2021/ts.html" class="sidebar-link">TypeScript 类型编程</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2020</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2020/deco.html" class="sidebar-link">Deco 图层处理层简明介绍</a></li><li><a href="/2020/rAF.html" class="sidebar-link">requestAnimationFrame 执行机制探索</a></li><li><a href="/2020/aopioc.html" class="sidebar-link">Nodejs AOP 与 IOC 实践</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2019</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2019/hooks.html" class="sidebar-link">使用 React Hooks + Context 打造简版 Redux</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2018</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2018/lazyload.html" class="sidebar-link">图片懒加载踩坑</a></li><li><a href="/2018/protocol.html" class="sidebar-link">互联网协议梳理</a></li><li><a href="/2018/authenticate.html" class="sidebar-link">用户认证流程梳理</a></li><li><a href="/2018/http.html" class="sidebar-link">HTTP 详细</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2017</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2017/2017-08-06.html" class="sidebar-link">《硅谷钢铁侠——马斯克的冒险人生》读书笔记</a></li><li><a href="/2017/jsTips.html" class="sidebar-link">JavaScript Tips</a></li><li><a href="/2017/regexp.html" class="sidebar-link">正则表达式 cheatsheet &amp; 实例</a></li><li><a href="/2017/string.html" class="sidebar-link">String 踩坑</a></li><li><a href="/2017/ydkjs-1.html" class="sidebar-link">《You don't know JavaScirpt》</a></li><li><a href="/2017/2017-03-12.html" class="sidebar-link">《人类简史》读书笔记</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2016</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2016/2016-12-31.html" class="sidebar-link">2016 &amp; 2017</a></li><li><a href="/2016/2016-11-16.html" class="sidebar-link">《围城》读书笔记</a></li><li><a href="/2016/2016-10-29.html" class="sidebar-link">《血色浪漫》读书笔记</a></li><li><a href="/2016/2016-09-21.html" class="sidebar-link">这段时间的感受与见闻</a></li><li><a href="/2016/hello-world.html" class="sidebar-link">《乔布斯传》读书笔记</a></li><li><a href="/2016/liqi.html" class="sidebar-link">我是荒野大镖客，这是我的利器</a></li><li><a href="/2016/2016-04-23.html" class="sidebar-link">学习日常</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>最近在工作中遇到了一些麻烦的环境问题：在安装 <a href="https://github.com/justadudewhohacks/opencv4nodejs" target="_blank" rel="noopener noreferrer">opencv4nodejs<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 这个 <code>npm</code> 包时老是安装不成功，主要问题是该包依赖 <code>OpenCV</code> 这个基于 <code>C++</code> 的图像处理库，并且 <code>OpenCV</code> 依赖了一些更底层的 <code>C</code> 相关的编译库，另外安装这个包时还要编译 <code>Node.js addon</code>，如果当前系统里有相应工具链版本不支持的情况就会失败。</p> <p>谷歌了很多解决办法，最后依旧无效，在弹尽粮绝之时，索性换了一种思路来解决这个问题：使用 <code>Docker</code> 跑该服务。<code>Docker</code> 天然就是为了抹平环境差异而生的，并且可以模拟生产环境，用它来跑开发环境是一个非常不错的选择。</p> <h2 id="场景分析"><a href="#场景分析" class="header-anchor">#</a> 场景分析</h2> <p>当前的业务开发场景是：通过 <code>opencv4nodejs</code> 借助 <code>OpenCV</code> 的能力输出一个图像处理的 <code>Node.js</code> 服务。需要考虑的几个问题有：</p> <ol><li>docker 起的服务需要暴露端口给到本地应用访问；</li> <li>本地源文件实时修改能映射到 docker 容器中去并重启服务；</li></ol> <p>也就是需要让 docker 将端口以及某个工作目录映射到本地工作目录。</p> <h2 id="镜像构建"><a href="#镜像构建" class="header-anchor">#</a> 镜像构建</h2> <p>首先构建 opencv4nodejs docker 镜像，这里参考原作者做的 <a href="https://github.com/justadudewhohacks/opencv4nodejs-docker-images/blob/master/opencv-nodejs/Dockerfile" target="_blank" rel="noopener noreferrer">docker 镜像<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>：</p> <p>首先构建一个基础镜像，基于 ubuntu 16.04 安装 OpenCV、Node.js 以及 opencv4nodejs、pm2 全局依赖，基础镜像 Dockerfile：</p> <div class="language-Dockerfile extra-class"><pre class="language-dockerfile"><code><span class="token instruction"><span class="token keyword">FROM</span> ubuntu:16.04</span>
+
+<span class="token instruction"><span class="token keyword">ARG</span> OPENCV_VERSION</span>
+<span class="token instruction"><span class="token keyword">ARG</span> NODEJS_MAJOR_VERSION</span>
+<span class="token instruction"><span class="token keyword">ARG</span> WITH_CONTRIB</span>
+
+<span class="token instruction"><span class="token keyword">ENV</span> OPENCV4NODEJS_DISABLE_AUTOBUILD=1</span>
+
+<span class="token comment"># 设置国内源</span>
+<span class="token instruction"><span class="token keyword">RUN</span> sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span>
+<span class="token instruction"><span class="token keyword">RUN</span> apt-get clean</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> apt-get update &amp;&amp; <span class="token operator">\</span>
+  apt-get install -y build-essential curl &amp;&amp; <span class="token operator">\</span>
+  apt-get install -y --no-install-recommends wget unzip git python cmake &amp;&amp; <span class="token operator">\</span>
+  curl -sL https://deb.nodesource.com/setup_<span class="token variable">${NODEJS_MAJOR_VERSION}</span>.x | bash &amp;&amp; <span class="token operator">\</span>
+  apt-get install -y nodejs --allow-unauthenticated &amp;&amp; node -v &amp;&amp; npm -v &amp;&amp; <span class="token operator">\</span>
+  rm -rf /var/lib/apt/lists/* &amp;&amp; <span class="token operator">\</span>
+  mkdir opencv &amp;&amp; <span class="token operator">\</span>
+  cd opencv &amp;&amp; <span class="token operator">\</span>
+  wget https://github.com/Itseez/opencv/archive/<span class="token variable">${OPENCV_VERSION}</span>.zip --no-check-certificate -O opencv-<span class="token variable">${OPENCV_VERSION}</span>.zip &amp;&amp; <span class="token operator">\</span>
+  unzip opencv-<span class="token variable">${OPENCV_VERSION}</span>.zip &amp;&amp; <span class="token operator">\</span>
+  if [ -n <span class="token string">&quot;$WITH_CONTRIB&quot;</span> ]; then <span class="token operator">\</span>
+  wget https://github.com/Itseez/opencv_contrib/archive/<span class="token variable">${OPENCV_VERSION}</span>.zip --no-check-certificate -O opencv_contrib-<span class="token variable">${OPENCV_VERSION}</span>.zip; <span class="token operator">\</span>
+  unzip opencv_contrib-<span class="token variable">${OPENCV_VERSION}</span>.zip; <span class="token operator">\</span>
+  fi &amp;&amp; <span class="token operator">\</span>
+  mkdir opencv-<span class="token variable">${OPENCV_VERSION}</span>/build &amp;&amp; <span class="token operator">\</span>
+  cd opencv-<span class="token variable">${OPENCV_VERSION}</span>/build &amp;&amp; <span class="token operator">\</span>
+  cmake_flags=<span class="token string">&quot;-D CMAKE_BUILD_TYPE=RELEASE \
+  -D BUILD_EXAMPLES=OFF \
+  -D BUILD_DOCS=OFF \
+  -D BUILD_TESTS=OFF \
+  -D BUILD_PERF_TESTS=OFF \
+  -D BUILD_JAVA=OFF \
+  -D BUILD_opencv_apps=OFF \
+  -D BUILD_opencv_aruco=OFF \
+  -D BUILD_opencv_bgsegm=OFF \
+  -D BUILD_opencv_bioinspired=OFF \
+  -D BUILD_opencv_ccalib=OFF \
+  -D BUILD_opencv_datasets=OFF \
+  -D BUILD_opencv_dnn_objdetect=OFF \
+  -D BUILD_opencv_dpm=OFF \
+  -D BUILD_opencv_fuzzy=OFF \
+  -D BUILD_opencv_hfs=OFF \
+  -D BUILD_opencv_java_bindings_generator=OFF \
+  -D BUILD_opencv_js=OFF \
+  -D BUILD_opencv_img_hash=OFF \
+  -D BUILD_opencv_line_descriptor=OFF \
+  -D BUILD_opencv_optflow=OFF \
+  -D BUILD_opencv_phase_unwrapping=OFF \
+  -D BUILD_opencv_python3=OFF \
+  -D BUILD_opencv_python_bindings_generator=OFF \
+  -D BUILD_opencv_reg=OFF \
+  -D BUILD_opencv_rgbd=OFF \
+  -D BUILD_opencv_saliency=OFF \
+  -D BUILD_opencv_shape=OFF \
+  -D BUILD_opencv_stereo=OFF \
+  -D BUILD_opencv_stitching=OFF \
+  -D BUILD_opencv_structured_light=OFF \
+  -D BUILD_opencv_superres=OFF \
+  -D BUILD_opencv_surface_matching=OFF \
+  -D BUILD_opencv_ts=OFF \
+  -D BUILD_opencv_xobjdetect=OFF \
+  -D BUILD_opencv_xphoto=OFF \
+  -D CMAKE_INSTALL_PREFIX=/usr/local&quot;</span> &amp;&amp; <span class="token operator">\</span>
+  if [ -n <span class="token string">&quot;$WITH_CONTRIB&quot;</span> ]; then <span class="token operator">\</span>
+  cmake_flags=<span class="token string">&quot;$cmake_flags -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${OPENCV_VERSION}/modules&quot;</span>; <span class="token operator">\</span>
+  fi &amp;&amp; <span class="token operator">\</span>
+  curl https://raw.githubusercontent.com/opencv/opencv_3rdparty/34e4206aef44d50e6bbcd0ab06354b52e7466d26/boostdesc_bgm.i &gt; ../../opencv_contrib-<span class="token variable">${OPENCV_VERSION}</span>/modules/xfeatures2d/src/boostdesc_bgm.i &amp;&amp; <span class="token operator">\</span>
+  echo <span class="token variable">$cmake_flags</span> &amp;&amp; <span class="token operator">\</span>
+  cmake <span class="token variable">$cmake_flags</span> .. &amp;&amp; <span class="token operator">\</span>
+  make -j $(nproc) &amp;&amp; <span class="token operator">\</span>
+  make install &amp;&amp; <span class="token operator">\</span>
+  sh -c <span class="token string">'echo &quot;/usr/local/lib&quot; &gt; /etc/ld.so.conf.d/opencv.conf'</span> &amp;&amp; <span class="token operator">\</span>
+  ldconfig &amp;&amp; <span class="token operator">\</span>
+  cd ../../../ &amp;&amp; <span class="token operator">\</span>
+  rm -rf opencv &amp;&amp; <span class="token operator">\</span>
+  npm install -g opencv4nodejs pm2 --unsafe-perm</span>
+</code></pre></div><p>在基础镜像 Dockerfile 同级目录执行：</p> <div class="language- extra-class"><pre class="language-text"><code>docker build -t ubuntu16.04-opencv3.4.1-node14 --build-arg OPENCV_VERSION=3.4.1 --build-arg WITH_CONTRIB=1 --build-arg NODEJS_MAJOR_VERSION=14 .
+</code></pre></div><p>至此，等待几分钟便制作好了基础的 <code>ubuntu16.04-opencv3.4.1-node14</code> 镜像，接下来构建服务镜像。</p> <p>构建服务镜像 Dockerfile：</p> <div class="language-Dockerfile extra-class"><pre class="language-dockerfile"><code><span class="token instruction"><span class="token keyword">FROM</span> ubuntu16.04-opencv3.4.1-node14</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> npm config set unsafe-perm=true --global</span>
+
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /app</span>
+
+<span class="token instruction"><span class="token keyword">COPY</span> . .</span>
+
+<span class="token instruction"><span class="token keyword">ENV</span> NODE_PATH=/usr/lib/node_modules</span>
+
+<span class="token comment"># 设置 npm 私服</span>
+<span class="token instruction"><span class="token keyword">RUN</span> npm config set registry=<span class="token string">&quot;http://registry.m.jd.com/&quot;</span></span>
+<span class="token instruction"><span class="token keyword">RUN</span> npm i --production</span>
+
+<span class="token comment"># 工作目录，映射卷</span>
+<span class="token instruction"><span class="token keyword">VOLUME</span> [ <span class="token string">&quot;/app/build&quot;</span> ]</span>
+
+<span class="token instruction"><span class="token keyword">ENTRYPOINT</span> npm run start &amp;&amp; <span class="token operator">\</span>
+  sleep 9999999d</span>
+</code></pre></div><p>在服务镜像 Dockerfile 同级目录执行：</p> <div class="language- extra-class"><pre class="language-text"><code>docker build -t cv-service .
+</code></pre></div><p>至此，便得到了最终的服务镜像。</p> <h2 id="跑服务"><a href="#跑服务" class="header-anchor">#</a> 跑服务</h2> <p>镜像制作好了，开始跑服务，这里需要将服务端口映射到本地端口，同时映射工作目录到本地目录：</p> <div class="language- extra-class"><pre class="language-text"><code>docker run -p 8080:8080 cv-service --mount type=bind,source=/Users/chenjunsheng/Documents/projects/sem/image-cropper/packages/server/build,target=/app/build
+</code></pre></div><p>服务启动之后，发现端口映射没问题，不过本地文件修改后，服务没有生效。</p> <p>那只能跑到镜像里查看一下问题的所在，先查看一下当前跑的 docker container:</p> <div class="language- extra-class"><pre class="language-text"><code>docker ps
+
+&gt;
+
+CONTAINER ID   IMAGE        COMMAND                  CREATED         STATUS         PORTS                    NAMES
+0e7c44db4548   cv-service   &quot;/bin/sh -c 'npm run…&quot;   7 seconds ago   Up 6 seconds   0.0.0.0:8080-&gt;8080/tcp   CV
+</code></pre></div><p>拿到当前跑的 CONTAINER ID ，进入 container 内部查看日志：</p> <div class="language- extra-class"><pre class="language-text"><code>docker exec -it 0e7c44db4548 bash
+</code></pre></div><p>进入 container 内部后，查看 pm2 输出的日志:</p> <div class="language- extra-class"><pre class="language-text"><code>pm2 logs
+</code></pre></div><p>然后本地目录修改代码，查看服务日志，最后发现是服务没有监听到文件变化，需要修改 pm2 配置：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;apps&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;script&quot;</span><span class="token operator">:</span> <span class="token string">&quot;build/index.js&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;cwd&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;log&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/export/xxx.log&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;log_date_format&quot;</span><span class="token operator">:</span> <span class="token string">&quot;YYYY-MM-DD HH:mm Z&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;error&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/export/xxx-err.log&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;output&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/export/xxx-out.log&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;max_memory_restart&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1536M&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;watch&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 设置监听</span>
+      <span class="token property">&quot;autorestart&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 设置自动重启</span>
+      <span class="token property">&quot;node_args&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;env&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;PORT&quot;</span><span class="token operator">:</span> <span class="token string">&quot;8080&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>修改后重启 pm2 服务即生效。</p> <h3 id="使用-docker-compose"><a href="#使用-docker-compose" class="header-anchor">#</a> 使用 docker-compose</h3> <p>同时也可以使用 docker-compose 进行端口映射和数据卷映射，<code>docker-compose.yml</code> 配置如下:</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.0'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cv</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> CV
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> cv<span class="token punctuation">-</span>service
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">'8080:8080'</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">'./packages/server/build:/app/build/'</span>
+</code></pre></div><p>至此，opencv4nodejs 安装不成功的问题便解决了，唯一不足的是，不能实时 debug 代码，只能在服务中打日志来测试。（开个脑洞：能否通过开个 debug 端口映射到本地编辑器呢，猜测可以。</p> <blockquote><p>20240130 更新
+可以用 dev containers 实现</p></blockquote> <h2 id="docker-常用操作"><a href="#docker-常用操作" class="header-anchor">#</a> docker 常用操作</h2> <p>拉取镜像：</p> <div class="language- extra-class"><pre class="language-text"><code>docker pull &lt;镜像名称&gt;:&lt;版本&gt;
+</code></pre></div><p>构建镜像：</p> <div class="language- extra-class"><pre class="language-text"><code>docker build -t &lt;镜像名&gt; --build-arg &lt;参数key&gt;=&lt;参数value&gt; .
+</code></pre></div><p>本地镜像列表：</p> <div class="language- extra-class"><pre class="language-text"><code>docker images
+</code></pre></div><p>删除镜像：</p> <div class="language- extra-class"><pre class="language-text"><code>docker image rm &lt;镜像ID&gt;
+
+# 强制删除
+docker rmi -f &lt;镜像ID&gt;
+</code></pre></div><p>启动容器：</p> <div class="language- extra-class"><pre class="language-text"><code># 将主机 3000 端口映射到容器内 8080 端口
+# 将本地目录挂载到容器目录
+docker run -p 3000:8080 cv-service --mount type=bind,source=/Users/chenjunsheng/Documents/projects/smartcode/opencv-service/build,target=/app/build
+
+# 启动一个容器 bash
+docker run -i -t centos7 /bin/bash
+</code></pre></div><p>查看容器列表：</p> <div class="language- extra-class"><pre class="language-text"><code>docker container ls
+
+docker ps
+</code></pre></div><p>停止容器：</p> <div class="language- extra-class"><pre class="language-text"><code>docker container stop &lt;容器ID&gt;
+
+docker stop &lt;容器ID&gt;
+</code></pre></div><p>重启容器：</p> <div class="language- extra-class"><pre class="language-text"><code>docker container restart &lt;容器ID&gt;
+</code></pre></div><p>进入容器内：</p> <div class="language- extra-class"><pre class="language-text"><code>docker exec -it &lt;容器ID&gt; bash
+</code></pre></div><p>复制容器内文档：</p> <div class="language- extra-class"><pre class="language-text"><code># 从本地复制到容器
+docker cp &lt;本地文件路径&gt; &lt;容器ID&gt;:&lt;容器路径&gt;
+
+# 从容器复制到本地
+docker cp &lt;容器ID&gt;:&lt;容器路径&gt; &lt;本地文件路径&gt;
+</code></pre></div><h3 id="docker-compose"><a href="#docker-compose" class="header-anchor">#</a> docker-compose</h3> <p>启动服务：</p> <div class="language- extra-class"><pre class="language-text"><code># -d 表示在后台运行
+docker-compose up -d
+</code></pre></div><p>停止服务：</p> <div class="language- extra-class"><pre class="language-text"><code>docker-compose down
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/2023/rust-1.html" class="prev">
+        《Rust 程序设计语言》读书笔记
+      </a></span> <span class="next"><a href="/2023/zongjie.html">
+        Do not be afraid
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.efdf1017.js" defer></script><script src="/assets/js/2.d444b0a2.js" defer></script><script src="/assets/js/1.7ca1e89d.js" defer></script><script src="/assets/js/63.d31d2aac.js" defer></script>
+  </body>
+</html>
